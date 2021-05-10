@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyCounter extends StatefulWidget {
@@ -20,11 +21,14 @@ class MyCounterState extends State<MyCounter> {
     this.counter = widget.initialValue;
   }
 
-  void add() {
+  void reload() {
+    this.counter = 0;
+    setState(() {});
+  }
 
-    setState(() {
-      counter++;
-    });
+  void add() {
+    counter++;
+    setState(() {});
   }
 
   @override
@@ -33,14 +37,29 @@ class MyCounterState extends State<MyCounter> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text("Counter es "),
+        SizedBox(height: 20),
         Text(
             "$counter",
           style: TextStyle(
             fontSize: 30
           ),
         ),
-        FloatingActionButton(
-            onPressed: this.add
+        SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+                child: CupertinoButton(
+                  child: Text( "Adicionar" ),
+                  onPressed: this.add,
+                )
+            ),
+            Expanded(
+                child: CupertinoButton(
+                  child: Text( "Reiniciar" ) ,
+                  onPressed: reload,
+                )
+            )
+          ],
         )
       ],
     );

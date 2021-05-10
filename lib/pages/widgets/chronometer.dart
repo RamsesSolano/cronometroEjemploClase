@@ -15,6 +15,12 @@ class _ChronometerState extends State<Chronometer> {
   bool running = false;
   Timer timer;
 
+  void reload(){
+    if( !this.running && milisecons != 0 ){
+      milisecons = 0;
+      setState(() {});
+    }
+  }
 
   void onPressed(){
     if( !this.running ){
@@ -28,7 +34,6 @@ class _ChronometerState extends State<Chronometer> {
       if( timer != null ){
         timer.cancel();
       }
-      this.milisecons = 0;
       this.running = false;
       setState(() {});
     }
@@ -61,10 +66,24 @@ class _ChronometerState extends State<Chronometer> {
               fontSize: 20
           ),
         ),
-        CupertinoButton(
-            child: Text( running ? "Detener" : "Iniciar"),
-            onPressed: this.onPressed,
+        SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+                child: CupertinoButton(
+                  child: Text( running ? "Detener" : "Iniciar"),
+                  onPressed: this.onPressed,
+                )
+            ),
+            Expanded(
+                child: CupertinoButton(
+                  child: Text( "Reiniciar" ) ,
+                  onPressed: this.reload,
+                )
+            )
+          ],
         )
+
       ],
     );
   }

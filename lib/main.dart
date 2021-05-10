@@ -1,4 +1,4 @@
-import 'package:cronometro_ejemplo_clase/pages/chronometer_page.dart';
+import 'package:cronometro_ejemplo_clase/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChronometerPage(),
+      home: HomePage(),
     );
   }
 }

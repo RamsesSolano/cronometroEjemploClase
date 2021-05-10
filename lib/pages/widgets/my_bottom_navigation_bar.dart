@@ -1,3 +1,5 @@
+import 'package:cronometro_ejemplo_clase/pages/chronometer_page.dart';
+import 'package:cronometro_ejemplo_clase/pages/home_page.dart';
 import 'package:cronometro_ejemplo_clase/pages/widgets/my_botton_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
@@ -21,6 +23,14 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
     Ionicons.person_outline
   ];
 
+  final List<dynamic> routes = [
+    HomePage(),
+    ChronometerPage(),
+    HomePage(),
+    ChronometerPage(),
+    HomePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +52,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
               iconOfElement: iconData,
               isActive: index == currentTab,
               onPressed: (){
+                final Route route = MaterialPageRoute(
+                    builder: (_) => routes[index],
+                );
+                Navigator.pushReplacement(context, route);
                 currentTab = index;
                 setState(() {});
               },
