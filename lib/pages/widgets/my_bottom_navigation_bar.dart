@@ -8,10 +8,7 @@ class MyBottomNavigationBar extends StatefulWidget{
   State<StatefulWidget> createState() {
     return _MyBottomNavigationBarState();
   }
-
-
 }
-
 
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
 
