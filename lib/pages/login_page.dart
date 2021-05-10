@@ -1,3 +1,5 @@
+import 'package:cronometro_ejemplo_clase/pages/home_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,8 +14,17 @@ class _LoginPageState extends State<LoginPage> {
   String _email = "";
   String _password = "";
 
-  void _submit( ) {
+  final _formKey = GlobalKey<FormState>();
 
+  void _submit( ) {
+    final isValid = _formKey.currentState.validate();
+    if( isValid ){
+      final Route route = MaterialPageRoute(
+          builder: (_){
+            return HomePage();
+          });
+        Navigator.pushReplacement(context, route);
+    }
   }
 
   @override
@@ -28,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             padding: EdgeInsets.all(15),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
