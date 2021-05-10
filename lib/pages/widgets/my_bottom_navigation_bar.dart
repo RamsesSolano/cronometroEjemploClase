@@ -4,7 +4,11 @@ import 'package:cronometro_ejemplo_clase/pages/widgets/my_botton_navigation_bar_
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-class MyBottomNavigationBar extends StatefulWidget{
+class MyBottomNavigationBar extends StatefulWidget {
+
+  final int currentTab;
+
+  const MyBottomNavigationBar({Key key, this.currentTab = 0}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -30,6 +34,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
     ChronometerPage(),
     HomePage(),
   ];
+
+  _MyBottomNavigationBarState({this.currentTab});
 
   @override
   Widget build(BuildContext context) {
